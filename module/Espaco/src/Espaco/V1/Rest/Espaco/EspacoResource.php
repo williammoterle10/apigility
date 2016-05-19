@@ -53,7 +53,7 @@ class EspacoResource extends AbstractResourceListener
             return new ApiProblem(404, 'Não existem dados para identificador informado!');
         }
         
-        return $espaco->getArrayCopy();
+        return $espaco;
     }
 
     /**
@@ -86,4 +86,5 @@ class EspacoResource extends AbstractResourceListener
         
         return $espaco;
     }
+
 }

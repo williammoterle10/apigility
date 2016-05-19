@@ -187,3 +187,14 @@ return array(
         'Espaco\\V1' => 'oauth'
     )
 );
+        
+//Criar um senha encriptografada com o seguinte comando
+// cd path/to/app
+// cd vendor/zfcampus/zf-oauth/
+// php bin/bcrypt.php password
+// php bin/bcrypt.php moterle (exemplo)
+// Retorno 
+// $2y$10$w56kHiJf26Rqcnuxm.ubbekPeUF/HXUK3cFJriWc1vUYbUvAXckGe
+
+// copiar a string de 60 bytes criada para adicionar na tabela oauth_clients.
+//INSERT INTO oauth_clients (client_id, client_secret, redirect_uri) VALUES ("william","$2y$10$w56kHiJf26Rqcnuxm.ubbekPeUF/HXUK3cFJriWc1vUYbUvAXckGe","/oauth/receivecode");

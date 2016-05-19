@@ -24,7 +24,7 @@ class EspacoService
     {
         $espacoEntity = $this->em->find('\Espaco\V1\Rest\Espaco\Entity\Espaco', (int)$id);
 
-        return $espacoEntity;
+        return $espacoEntity->getArrayCopy();
     }
     
     /**
@@ -35,9 +35,14 @@ class EspacoService
      */
     public function fetchAll($params = array())
     {
-        $espacoEntity = $this->em->findBy('\Espaco\V1\Rest\Espaco\Entity\Espaco');
-        var_dump($espacoEntity->getCodEspaco());exit;
-        return $espacoEntity;
+        $espacosEntity = $this->em->getRepository('\Espaco\V1\Rest\Espaco\Entity\Espaco')->findAll();
+        
+        $result = [];
+        foreach ($espacosEntity as $i  => $espaco){
+            $result[$i] = $espaco->getArrayCopy();
+        }
+        
+        return $result;
     }
     
     /**
