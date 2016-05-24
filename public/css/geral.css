@@ -1,0 +1,22 @@
+input {
+    width: 100%;
+}
+.botao-create{
+    margin: 15px 0; 
+}
+form{
+    display: none;
+}
+.form-create {
+    margin-bottom: 50px;
+    border: solid #000000;
+}
+.botao-submit{
+    margin-bottom: 10px;
+    width: 100px;
+}
+h4{
+    text-align: center;
+    font-size: 30px;
+    color: black;
+}

@@ -1,0 +1,135 @@
+<div class="container-fluid form-create">
+    <a href="#" class="btn btn-success botao-create">
+        Novo Espaço
+    </a>
+
+    <form id="form-novo-espaco" name="form" novalidate ng-submit="criar(espaco)">
+        <div class="row">
+            
+            <div class="form-group col-xs-3">
+                <label>Descrição</label>
+                <input type="text" placeholder="Descrição" class="form-control" name="desespaco" ng-model="espaco.des_espaco" required="true">
+                
+                <div ng-show="form.$submitted || form.desespaco.$touched">
+                    <div ng-show="form.desespaco.$error.required">Informe um Descrição.</div>
+                </div>
+            </div>
+            
+            <div class="form-group col-xs-3">
+                <label>Piso</label>
+                <input type="text" placeholder="Piso. Ex: 1 Piso" class="form-control" name="piso" ng-model="espaco.piso" required="true">
+                
+                <div ng-show="form.$submitted || form.piso.$touched">
+                    <div ng-show="form.piso.$error.required">Informe o Piso.</div>
+                </div>
+            </div>
+            
+            <div class="form-group col-xs-3">
+                <label>Máximo Pessoas</label>
+                <input type="number" placeholder="Máximo Pessoas. Ex: 99" class="form-control" name="maximopessoas" ng-model="espaco.maximo_pessoas" required="true">
+                
+                <div ng-show="form.$submitted || form.maximopessoas.$touched">
+                    <div ng-show="form.maximopessoas.$error.required">Informe o Máximo de Pessoas.</div>
+                </div>
+            </div>
+            
+            <div class="form-group col-xs-3">
+                <label>Área Total</label>
+                <input type="text" placeholder="Área Total. Ex: 99.99" class="form-control" name="areatotal" ng-model="espaco.area_total" required="true">
+                
+                <div ng-show="form.$submitted || form.areatotal.$touched">
+                    <div ng-show="form.areatotal.$error.required">Informe a Área Total.</div>
+                </div>
+            </div>
+        </div>  
+        <div class="row">
+            
+            <div class="form-group col-xs-3">
+                <label>Tipo Espaço</label>
+                <select class="form-control" name="tipoespaco" ng-model="espaco.cod_tipo_espaco" required="true" ng-options="x for (x, y) in tiposEspacos"></select>
+                
+                <div ng-show="form.$submitted || form.tipoespaco.$touched">
+                    <div ng-show="form.tipoespaco.$error.required">Selecione um Tipo Espaço</div>
+                </div>
+            </div>
+            
+            <div class="form-group col-xs-3">
+                <label>Tipo Uso</label>
+                <select class="form-control" name="tipouso" ng-model="espaco.cod_tipo_uso" required="true" ng-options="x for (x, y) in tiposUso"></select>
+                
+                <div ng-show="form.$submitted || form.tipouso.$touched">
+                    <div ng-show="form.tipouso.$error.required">Selecione um Tipo Uso</div>
+                </div>
+            </div>
+            
+            <div class="form-group col-xs-3">
+                <label>Bloco</label>
+                <select class="form-control" name="bloco" ng-model="espaco.cod_bloco" required="true" ng-options="x for (x, y) in blocos"></select>
+                
+                <div ng-show="form.$submitted || form.bloco.$touched">
+                    <div ng-show="form.bloco.$error.required">Selecione um Bloco</div>
+                </div>
+            </div>
+            
+            <div class="form-group col-xs-3">
+                <label>Acessibilidade</label>
+                <select class="form-control" name="acessibilidade" ng-model="espaco.cod_acessibilidade" required="true" ng-options="x for (x, y) in acessibilidades"></select>
+                
+                <div ng-show="form.$submitted || form.acessibilidade.$touched">
+                    <div ng-show="form.acessibilidade.$error.required">Selecione uma Acessibilidade</div>
+                </div>
+            </div>
+        </div>
+        
+        <input class="btn btn-primary botao-submit" type="submit" value="Enviar">
+      
+    </form>
+</div>
+
+<h4>Espaço</h4>
+
+<table class="table table-condensed table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                Descrição
+            </th>
+            <th>
+                Piso
+            </th>
+            <th>
+                Máximo Pessoas
+            </th>
+            <th>
+                Área Total
+            </th>
+            <th>
+                Opções
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="espaco in espacos| orderBy:'des_espaco'" contenteditable="true">
+            <td>
+                <input type="text" ng-model="espaco.des_espaco">
+            </td>
+            <td>
+                <input type="text" ng-model="espaco.piso">
+            </td>
+            <td>
+                <input type="text" ng-model="espaco.maximo_pessoas">
+            </td>
+            <td>
+                <input type="text" ng-model="espaco.area_total">
+            </td>
+            <td contenteditable="false">
+                <a href="#" ng-click="atualizar(espaco)">
+                    Atualizar
+                </a>
+                <a href="#" ng-click="deletar(espaco)">
+                    Deletar
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>

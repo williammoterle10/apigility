@@ -1,66 +1,28 @@
 <!DOCTYPE html>
 <html ng-app="espaco">
     <head>
+        <title> Espaços </title>
+        
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+        
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/geral.css" rel="stylesheet">
+        
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/geral.js"></script>
         <script src="js/angular.min.js"></script>
         <script src="js/angular-resource.min.js"></script>
         <script src="js/module.js"></script>
         <script src="js/espaco_ctrl.js"></script>
         <script src="js/espaco_factory.js"></script>
-        <style>
-            table, th, td{
-                border: 1px solid black;
-            }
-        </style>
+       
     </head>
 
     <body>
         <div ng-controller="EspacoCtrl">
-            <!--{{espacos}}-->
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>
-                            Descrição
-                        </th>
-                        <th>
-                            Piso
-                        </th>
-                        <th>
-                            Máximo Pessoas
-                        </th>
-                        <th>
-                            Área Total
-                        </th>
-                        <th>
-                            Opções
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="espaco in espacos" contenteditable="true">
-                        <td>
-                            {{espaco.des_espaco}}
-                        </td>
-                        <td>
-                            {{espaco.piso}}
-                        </td>
-                        <td>
-                            {{espaco.maximo_pessoas}}
-                        </td>
-                        <td>
-                            {{espaco.area_total}}
-                        </td>
-                        <td contenteditable="false">
-                            <a href="#" ng-click="atualizar(espaco)">
-                                Atualizar
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div ng-include src="'views/template.html'"></div>
         </div>
     </body>
 </html>

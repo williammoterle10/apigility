@@ -5,7 +5,7 @@ angular.module("espaco").factory("EspacoFactory", function ($resource) {
             'show': {method: 'GET', isArray: false},
             'create': {method: 'POST'},
             'update': {method: 'PUT'},
-            'delete': {method: 'DELETE'},
+            'delete ': {method: 'DELETE'},
         }
     );
 });
