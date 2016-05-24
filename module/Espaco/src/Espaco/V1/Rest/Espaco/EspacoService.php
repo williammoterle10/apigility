@@ -41,7 +41,7 @@ class EspacoService
         foreach ($espacosEntity as $i  => $espaco){
             $result[$i] = $espaco->getArrayCopy();
         }
-        
+
         return $result;
     }
     
@@ -143,7 +143,7 @@ class EspacoService
         try{
             $this->em->flush();
 
-            return new ApiProblem(200, 'Espaço editado com sucesso!');
+            return $espacoEntity->getArrayCopy();
         }
         catch (\Exception $e){
             return new ApiProblem(404, 'Erro ao editar Espaço!');

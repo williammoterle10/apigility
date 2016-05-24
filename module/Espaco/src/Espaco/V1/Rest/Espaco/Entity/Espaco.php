@@ -26,9 +26,9 @@ class Espaco
     protected $cod_espaco;
     
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      *
-     * @var integer
+     * @var float
      */
     protected $area_total;
     
@@ -175,7 +175,7 @@ class Espaco
     }
     
     /**
-     * @return integer
+     * @return float
      */
     public function getAreaTotal()
     {
@@ -183,7 +183,7 @@ class Espaco
     }
 
     /**
-     * @param integer $area_total
+     * @param float $area_total
      */
     public function setAreaTotal($area_total)
     {
@@ -416,7 +416,17 @@ class Espaco
     
     public function getArrayCopy()
     {
-        return get_object_vars($this);
+        return [
+            'cod_espaco' => $this->cod_espaco,
+            'des_espaco' => $this->des_espaco,
+            'area_total' => $this->area_total,
+            'maximo_pessoas' => $this->maximo_pessoas,
+            'cod_tipo_espaco' => $this->cod_tipo_espaco->getCod_tipo_espaco(),
+            'cod_tipo_uso' => $this->cod_tipo_uso->getCodTipoUso(),
+            'cod_bloco' => $this->cod_bloco->getCodBloco(),
+            'piso' => $this->piso,
+            'cod_acessibilidade' => $this->cod_acessibilidade->getCodAcessibilidade()
+        ];
     }
 }
 

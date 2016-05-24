@@ -38,7 +38,7 @@ class EspacoTipoUso
      */
     public function getCodTipoUso()
     {
-        return $this->cod_TipoUso;
+        return $this->cod_tipo_uso;
     }
 
     /**

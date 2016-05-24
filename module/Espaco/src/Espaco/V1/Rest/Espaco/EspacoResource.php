@@ -87,4 +87,17 @@ class EspacoResource extends AbstractResourceListener
         return $espaco;
     }
 
+    /**
+     * Update a resource
+     *
+     * @param  mixed $id
+     * @param  mixed $data
+     * @return ApiProblem|mixed
+     */
+    public function teste()
+    {
+        
+        return ['sadsa'=> 'asdasdas'];
+    }
+
 }
