@@ -1,17 +1,31 @@
-angular.module("espaco").controller("EspacoCtrl", function ($scope, EspacoFactory) {
+angular.module("espaco").controller("EspacoCtrl", function ($scope, EspacoFactory, OauthFactory, TokenFactory) {
     var vm = $scope;
-    vm.espacos = EspacoFactory.index();
+    vm.espaco = new EspacoFactory;
+    vm.user = '';
+
+    var params = {
+        grant_type: 'client_credentials',
+        client_id: 'william',
+        client_secret: 'moterle',
+    };
     
-    $scope.atualizar = function(item){
-        item.$update(function(){
+    vm.oauth = OauthFactory.token(params, function (data){
+        var stringToken = data.token_type + ' ' + data.access_token;
+        TokenFactory.addToken(stringToken);
+        vm.espacos = EspacoFactory.index();
+        $scope.template = 'views/template.html';
+    });
+    
+    vm.atualizar = function(espaco){
+        espaco.$update(function(){
             alert('Atualizado com Sucesso!');
         }, function(){
             alert('Erro!');
         });
     };
     
-    $scope.deletar = function(item){
-        item.$delete(function(){
+    vm.deletar = function(espaco){
+        espaco.$delete(function(){
             vm.espacos = EspacoFactory.index();
             alert('Deletado com Sucesso!');
         }, function(){
@@ -19,21 +33,22 @@ angular.module("espaco").controller("EspacoCtrl", function ($scope, EspacoFactor
         });
     };
     
-    $scope.criar = function(item){
-        EspacoFactory.create(item, function(){
-            vm.espacos = EspacoFactory.index();
-            alert('Criado com Sucesso!');
+    vm.criar = function(espaco){
+        espaco.$create(function (){
+           vm.espacos = EspacoFactory.index();
+           alert('Criado com Sucesso!');
+           delete vm.espaco;
         }, function(){
-            alert('Erro!');
+            alert('Erro!')
         });
     };
     
-    $scope.acessibilidades = {
+    vm.acessibilidades = {
         'ACESSO': 18,
         'SEM ACESSO': 19
     };
     
-    $scope.tiposUso = {
+    vm.tiposUso = {
         'AULA PRÁTICA': 18,
         'LABORATÓRIO DE INFORMÁTICA': 19,
         'LABORATÓRIO': 20,
@@ -41,13 +56,13 @@ angular.module("espaco").controller("EspacoCtrl", function ($scope, EspacoFactor
         'AULA TEÓRICA': 22
     };
     
-    $scope.tiposEspacos = {
+    vm.tiposEspacos = {
         'LABORATÓRIO': 16,
         'SALA DE AULA': 17,
         'LABORATÓRIO DE TECNOLOGIA': 18
     };
     
-    $scope.blocos = {
+    vm.blocos = {
         'BLOCO F': 37,
         'BLOCO H': 38,
         'BLOCO G 1': 39,

@@ -162,16 +162,15 @@ class EspacoService
         if (!$espacoEntity){
             return new ApiProblem(404, 'Espaço não encontrado!');
         }
-        
         $this->em->remove($espacoEntity);
         
         try{
             $this->em->flush();
 
-            return new ApiProblem(200, 'Espaço removido com sucesso!');
+            return new ApiProblem(200, 'Espaço criado com sucesso!');
         }
         catch (\Exception $e){
-            return new ApiProblem(404, 'Erro ao remover Espaço!');
+            return new ApiProblem(404, 'Espaço criado com sucesso!');
         }
     }
     

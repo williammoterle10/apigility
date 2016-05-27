@@ -6,13 +6,13 @@ use ZF\Rest\AbstractResourceListener;
 
 class EspacoResource extends AbstractResourceListener
 {
-   protected $service_espaco;
-
+    protected $service_espaco;
+   
     public function __construct($service_espaco)
     {
         $this->service_espaco = $service_espaco;
     }
-
+        
     /**
      * Create a resource
      *
@@ -86,18 +86,4 @@ class EspacoResource extends AbstractResourceListener
         
         return $espaco;
     }
-
-    /**
-     * Update a resource
-     *
-     * @param  mixed $id
-     * @param  mixed $data
-     * @return ApiProblem|mixed
-     */
-    public function teste()
-    {
-        
-        return ['sadsa'=> 'asdasdas'];
-    }
-
 }

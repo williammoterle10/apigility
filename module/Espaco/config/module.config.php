@@ -167,18 +167,18 @@ return array(
         'authorization' => array(
             'Espaco\\V1\\Rest\\Espaco\\Controller' => array(
                 'collection' => array(
-                    'GET' => false,
-                    'POST' => false,
-                    'PUT' => false,
-                    'PATCH' => false,
-                    'DELETE' => false,
+                    'GET' => true,
+                    'POST' => true,
+                    'PUT' => true,
+                    'PATCH' => true,
+                    'DELETE' => true,
                 ),
                 'entity' => array(
-                    'GET' => false,
-                    'POST' => false,
-                    'PUT' => false,
-                    'PATCH' => false,
-                    'DELETE' => false,
+                    'GET' => true,
+                    'POST' => true,
+                    'PUT' => true,
+                    'PATCH' => true,
+                    'DELETE' => true,
                 ),
             ),
         ),
