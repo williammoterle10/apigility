@@ -1,20 +1,28 @@
-angular.module("espaco").controller("EspacoCtrl", function ($scope, EspacoFactory, OauthFactory, TokenFactory) {
+angular.module("espaco").controller("EspacoCtrl", function ($scope, EspacoFactory, OauthFactory, TokenService) {
     var vm = $scope;
     vm.espaco = new EspacoFactory;
-    vm.user = '';
 
-    var params = {
-        grant_type: 'client_credentials',
-        client_id: 'william',
-        client_secret: 'moterle',
-    };
+    vm.template = 'views/template.html';
     
-    vm.oauth = OauthFactory.token(params, function (data){
-        var stringToken = data.token_type + ' ' + data.access_token;
-        TokenFactory.addToken(stringToken);
-        vm.espacos = EspacoFactory.index();
-        $scope.template = 'views/template.html';
-    });
+    vm.gerarToken = function(credenciais) {
+
+        var params = {
+            grant_type: 'client_credentials',
+            client_id: credenciais.client_id,
+            client_secret: credenciais.client_secret,
+        };
+        
+        vm.oauth = OauthFactory.token(params, function (data){
+            var stringToken = data.token_type + ' ' + data.access_token;
+            TokenService.addToken(stringToken);
+            vm.espacos = EspacoFactory.index();
+            alert('Token gerado com Sucesso!');
+            delete vm.credenciais;
+            $('.botao-gerar-token').click();
+        }, function (){
+            alert('Erro ao gerar token!');
+        });
+    }
     
     vm.atualizar = function(espaco){
         espaco.$update(function(){
@@ -26,8 +34,8 @@ angular.module("espaco").controller("EspacoCtrl", function ($scope, EspacoFactor
     
     vm.deletar = function(espaco){
         espaco.$delete(function(){
-            vm.espacos = EspacoFactory.index();
             alert('Deletado com Sucesso!');
+            delete vm.espaco;
         }, function(){
             alert('Erro!');
         });
@@ -38,6 +46,7 @@ angular.module("espaco").controller("EspacoCtrl", function ($scope, EspacoFactor
            vm.espacos = EspacoFactory.index();
            alert('Criado com Sucesso!');
            delete vm.espaco;
+           $('.botao-create').click();
         }, function(){
             alert('Erro!')
         });
@@ -89,5 +98,10 @@ angular.module("espaco").controller("EspacoCtrl", function ($scope, EspacoFactor
         'BLOCO C': 63,
         'BLOCO K2': 64,
         'BLOCO T': 65
+    };
+    
+    vm.credenciais = {
+        client_id: '',
+        client_secret: ''
     };
 });

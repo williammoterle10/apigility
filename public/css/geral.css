@@ -1,17 +1,17 @@
 input {
     width: 100%;
 }
-.botao-create{
-    margin: 15px 0; 
+.botao-create, .botao-gerar-token{
+    margin: 15px 0;
 }
 form{
     display: none;
 }
-.form-create {
+.form-create, .form-gerar-token{
     margin-bottom: 50px;
     border: solid #000000;
 }
-.botao-submit{
+.botao-submit, .botao-submit-token{
     margin-bottom: 10px;
     width: 100px;
 }

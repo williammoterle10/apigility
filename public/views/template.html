@@ -1,3 +1,35 @@
+<h4>Gerar Token de Acesso</h4>
+<div class="container-fluid form-gerar-token">
+    <a href="#" class="btn btn-success botao-gerar-token">
+        Gerar Token
+    </a>
+    
+    <form id="form-token" name="form_token" novalidate ng-submit="gerarToken(credenciais)">
+        <div class="row">
+            
+            <div class="form-group col-xs-6">
+                <label>Usuário</label>
+                <input type="text" placeholder="Usuário" class="form-control" name="clientid" ng-model="credenciais.client_id" required="true">
+                
+                <div ng-show="form_token.$submitted || form_token.clientid.$touched">
+                    <div ng-show="form_token.clientid.$error.required">Informe Usuário.</div>
+                </div>
+            </div>
+            
+            <div class="form-group col-xs-6">
+                <label>Senha</label>
+                <input type="password" placeholder="Senha" class="form-control" name="clientsecret" ng-model="credenciais.client_secret" required="true">
+                
+                <div ng-show="form_token.$submitted || form_token.clientsecret.$touched">
+                    <div ng-show="form_token.clientsecret.$error.required">Informe a Senha.</div>
+                </div>
+            </div>
+        </div>
+        <input class="btn btn-primary botao-submit-token" type="submit" value="Enviar">
+    </form>
+</div>
+
+<h4>Criar Novo Espaço</h4>
 <div class="container-fluid form-create">
     <a href="#" class="btn btn-success botao-create">
         Novo Espaço

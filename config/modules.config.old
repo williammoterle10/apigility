@@ -24,4 +24,5 @@ return array(
     'ZF\\Rpc',
     'ZF\\Versioning',
     'Teste',
+    'Espaco',
 );

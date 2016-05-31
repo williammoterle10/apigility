@@ -21,9 +21,7 @@ return array(
         ),
     ),
     'db' => array(
-        'adapters' => array(
-            'db' => array(),
-        ),
+        'adapters' => array(),
     ),
     'router' => array(
         'routes' => array(
@@ -39,7 +37,7 @@ return array(
     'zf-mvc-auth' => array(
         'authentication' => array(
             'map' => array(
-                'Espaco\\V1' => 'oauth2_pdo'
+                'Espaco\\V1' => 'oauth2_pdo',
             ),
         ),
     ),

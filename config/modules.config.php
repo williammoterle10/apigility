@@ -23,6 +23,5 @@ return array(
     'ZF\\Rest',
     'ZF\\Rpc',
     'ZF\\Versioning',
-    'Teste',
-    'Espaco',
+    19 => 'Espaco',
 );

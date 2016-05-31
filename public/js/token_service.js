@@ -1,4 +1,4 @@
-angular.module("espaco").factory("TokenFactory", function () {
+angular.module("espaco").service("TokenService", function () {
     var tokens = [];
 
     var addToken = function(token) {
