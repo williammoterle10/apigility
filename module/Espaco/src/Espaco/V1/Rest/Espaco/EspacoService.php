@@ -167,10 +167,10 @@ class EspacoService
         try{
             $this->em->flush();
 
-            return new ApiProblem(200, 'Espaço criado com sucesso!');
+            return new ApiProblem(200, 'Espaço deletado com sucesso!');
         }
         catch (\Exception $e){
-            return new ApiProblem(404, 'Espaço criado com sucesso!');
+            return new ApiProblem(404, 'Espaço deletar com sucesso!');
         }
     }
     
